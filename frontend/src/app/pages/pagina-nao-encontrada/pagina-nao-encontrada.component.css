@@ -1,0 +1,16 @@
+.pagina-nao-encontrada {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center
+}
+
+.pagina-nao-encontrada.flex {
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.pagina-nao-encontrada.flex > * {
+  width: 100%;
+}
