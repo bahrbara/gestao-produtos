@@ -8,11 +8,11 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.repeteco</groupId>
+    <groupId>com.nexti</groupId>
     <artifactId>teste</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>teste</name>
-    <description>Repeteco</description>
+    <description>nexti</description>
 
     <properties>
         <java.version>1.8</java.version>

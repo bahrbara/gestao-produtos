@@ -1,4 +1,4 @@
-package com.repeteco.teste;
+package com.nexti.teste;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

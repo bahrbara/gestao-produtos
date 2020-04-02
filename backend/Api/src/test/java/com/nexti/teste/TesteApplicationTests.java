@@ -1,4 +1,4 @@
-package com.repeteco.teste;
+package com.nexti.teste;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
