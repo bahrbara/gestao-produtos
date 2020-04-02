@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - TesteApplication",
+      "request": "launch",
+      "mainClass": "com.repeteco.teste.TesteApplication",
+      "projectName": "teste"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      PGDATA: /data/postgres
+    volumes:
+      - ./pg:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/frontend/app'
+      - '/frontend/app/node_modules'
+    ports:
+      - '4201:4200'
+
+  # backend:
+  #   container_name: backend
+  #   build:
+  #     context: backend
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - '.:/backend/app'
+  #     - '/backend/app/node_modules'
+  #   ports:
+  #     - '8080:8080'
