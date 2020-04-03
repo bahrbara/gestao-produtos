@@ -7,7 +7,7 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
   templateUrl: 'sidenav-responsive-component.html',
   styleUrls: ['sidenav-responsive-component.css'],
 })
-export class SidenavResponsiveExample implements OnDestroy {
+export class SidenavResponsive implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   fillerNav = ["Usuários", "Produtos", "Pedidos"]
