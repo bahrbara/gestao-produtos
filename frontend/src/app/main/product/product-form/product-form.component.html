@@ -1,0 +1,63 @@
+<div id="product-form" class="product">
+  <header class="top-bg mat-accent-bg" fxlayout="row" fxLayoutAlign="center center">
+    <h2 fxFlex>
+      <mat-icon class="mr-16">all_inbox</mat-icon>
+      <span class="text"> Produtos</span>
+    </h2>
+  </header>
+  <main class="container mat-elevation-z0">
+    <div fxLayout="column" fxLayoutAlign="start start" style="flex-direction: column !important;">
+      <form class="mat-white-bg mat-elevation-z4" fxLayout="column" id="productForm" [formGroup]="productForm">
+        <div class="requester pb-24">
+          <div class="h2 mb-24">
+            <mat-icon class="mr-16">inbox</mat-icon>
+            <span class="text"> Produto</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex="50" style="margin-right: 10px">
+              <input formControlName="name" placeholder="Nome do produto" type="text" matInput>
+              <mat-error>Informe o nome do produto.</mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="50">
+              <input matInput formControlName="sku" placeholder="SKU" />
+              <mat-error>Informe o SKU.</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex="100" style="margin-right: 10px">
+              <input formControlName="description" placeholder="Descrição do produto" type="text" matInput>
+              <mat-error>Informe a descrição do produto.</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex="50" style="margin-right: 10px">
+              <input formControlName="price" placeholder="Preço R$" type="number" matInput>
+              <mat-error>Informe o preço do produto.</mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="50">
+              <input matInput formControlName="amount" placeholder="Quantidade" type="number" />
+              <mat-error>Informe a quantidade do produto.</mat-error>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </form>
+      <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate">
+      </mat-progress-bar>
+      <div fxLayout="row" fxFlex="1 0 auto" class="actions-buttons">
+        <button mat-raised-button type="button" color="warn" (click)="removeProduct()" [disabled]="showLoadingBar">
+          Excluir
+        </button>
+        <div fxLayout="row" fxLayoutAlign="end" fxFlex="1 0 auto">
+          <button mat-button color="primary" type="button" class="mr-8" (click)="goBack()" [disabled]="showLoadingBar">
+            Voltar
+          </button>
+          <button mat-raised-button color="primary" class="mat-accent" type="submit"
+            [disabled]="productForm.invalid || showLoadingBar" aria-label="Salvar" (click)="save()">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
