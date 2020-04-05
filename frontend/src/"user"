@@ -1,0 +1,83 @@
+"user" 
+{
+  "idClient": 1
+  "name": "Bárbara"
+  "cpf": "04778862996"
+  "birthdate":"2000-10-10"
+}
+
+"users" 
+[
+{
+  "idClient": 1
+  "name": "Bárbara"
+  "cpf": "04778862996"
+  "birthdate":"1987-01-01"
+},
+{
+  "idClient": 2
+  "name": "Tiago"
+  "cpf": "31229866809"
+  "birthdate":"1985-08-17"
+},
+{
+  "idClient": 3
+  "name": "Heleno"
+  "cpf": "006987444562"
+  "birthdate":"2019-03-08"
+},
+{
+  "idClient": 4
+  "name": "Haru"
+  "cpf": "566998415236"
+  "birthdate":"2021-01-10"
+}
+]
+
+"product"
+{
+  "idProduct": 1,
+  "name": "hero Product",
+  "sku": "0002297272"
+	"description": "Lorem ipsum dolor sit amet",
+	"price": "99",
+  "amount": 10,
+}
+
+
+"products"
+[
+{
+  "idProduct": 1,
+  "name": "hero Product",
+  "sku": "0002297272"
+	"description": "Lorem ipsum dolor sit amet",
+	"price": "99",
+  "amount": 10,
+},
+{
+  "idProduct": 2,
+  "name": "trumbler Product",
+  "sku": "00033397272"
+	"description": "Lorem ipsum dolor sit amet",
+	"price": "9",
+  "amount": 23,
+},
+{
+  "idProduct": 3,
+  "name": "picanha Product",
+  "sku": "0002297272"
+	"description": "Lorem ipsum dolor sit amet",
+	"price": "23",
+  "amount": 60,
+},
+{
+  "idProduct": 4,
+  "name": "hero Product",
+  "sku": "0002297272"
+	"description": "Lorem ipsum dolor sit amet",
+	"price": "99",
+  "amount": 10,
+}
+]
+

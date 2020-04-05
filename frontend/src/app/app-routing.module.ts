@@ -1,10 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { UsersComponent } from './main/user/users/users.component';
+import { UserFormComponent } from './main/user/user-form/user-form.component';
+import { ProductsComponent } from './main/product/products/products.component';
+import { ProductFormComponent } from './main/product/product-form/product-form.component';
 
 const appRoutes: Routes = [
-    { path: '**', component: PaginaNaoEncontradaComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    {
+        path: 'users',
+        children: [
+            { path: '', component: UsersComponent},
+            { path: ':id', component: UserFormComponent }
+        ]
+    },
+    {
+        path: 'products',
+        children: [
+            { path: '', component: ProductsComponent},
+            { path: ':id', component: ProductFormComponent }
+        ]
+    },
+    { path: '', component: DashboardComponent },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -15,7 +36,8 @@ const appRoutes: Routes = [
                 onSameUrlNavigation: 'reload',
                 useHash: true
             }
-    )],
-    exports: [RouterModule]
+        )],
+    exports: [RouterModule],
+    providers: [Location]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

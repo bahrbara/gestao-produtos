@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Nexti Gestão de Produtos';
+  title = 'Gestão de Produtos';
+
+  isMenuOpen = true;
+  contentMargin = 240;
+
+  onToolbarMenuToggle() {
+    console.log('On toolbar toggled', this.isMenuOpen);
+    this.isMenuOpen = !this.isMenuOpen;
+
+    if(!this.isMenuOpen) {
+      this.contentMargin = 70;
+    } else {
+      this.contentMargin = 240;
+    }
+  }
 }
