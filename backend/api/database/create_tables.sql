@@ -1,4 +1,4 @@
-CREATE TABLE User (
+CREATE TABLE users (
     id_user INTEGER PRIMARY KEY,
     name VARCHAR NOT NULL,
     cpf VARCHAR NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE User (
     UNIQUE (id_user, cpf)
 );
 
-CREATE TABLE Product (
+CREATE TABLE products (
     id_product INTEGER PRIMARY KEY,
     sku VARCHAR NOT NULL,
     name VARCHAR NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE Product (
     UNIQUE (id_product)
 );
 
-CREATE TABLE Order (
+CREATE TABLE orders (
     id_order INTEGER PRIMARY KEY,
     id_user INTEGER,
     id_products_order INTEGER,
@@ -25,27 +25,27 @@ CREATE TABLE Order (
     UNIQUE (id_order)
 );
 
-CREATE TABLE Products_order (
+CREATE TABLE products_order (
     id_products_order INTEGER,
     id_order INTEGER NOT NULL,
     id_product INTEGER NOT NULL,
     UNIQUE (id_products_order)
 );
 
-ALTER TABLE Order ADD CONSTRAINT FK_Order_0
+ALTER TABLE orders ADD CONSTRAINT FK_order_0
     FOREIGN KEY (id_user)
-    REFERENCES User (id_user);
+    REFERENCES users (id_user);
  
-ALTER TABLE Order ADD CONSTRAINT FK_Order_1
+ALTER TABLE orders ADD CONSTRAINT FK_Order_1
     FOREIGN KEY (id_products_order)
-    REFERENCES Products_order (id_products_order);
+    REFERENCES products_order (id_products_order);
 
-ALTER TABLE Products_order ADD CONSTRAINT FK_Products_order_0
+ALTER TABLE products_order ADD CONSTRAINT FK_Products_order_0
     FOREIGN KEY (id_order)
-    REFERENCES Order (id_order);
+    REFERENCES orders (id_order);
 
-ALTER TABLE Products_order ADD CONSTRAINT FK_Products_order_0
+ALTER TABLE products_order ADD CONSTRAINT FK_Products_order_1
     FOREIGN KEY (id_product)
-    REFERENCES Product (id_product);
+    REFERENCES product (id_product);
 
 CREATE SEQUENCE hibernate_sequence START 1;

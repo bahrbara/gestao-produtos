@@ -1,6 +1,8 @@
 package com.nexti.teste.Model;
 
 import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,23 +13,19 @@ public class Order {
     @Id
     @GeneratedValue
     private int idOrder;
-    private Integer amt_purchase;
-    private Date dt_purchase;
+    private int idCustomer;
+    private BigDecimal total;
+    private Date createdAt;
+    private Date updatedAt;
 
-    @Column(name = "id_client")
-    private int idClient;
+    public Order() {
+    }
 
-    @Column(name = "id_products_order")
-    private int idProductsOrder;
-
-
-    public Order() {}
-
-    public Order(int idClient, int idProductsOrder, Integer amt_purchase, Date dt_purchase) {
-        this.idClient = idClient;
-        this.idProductsOrder = idProductsOrder;
-        this.amt_purchase = amt_purchase;
-        this.dt_purchase = Calendar.getInstance().getTime();
+    public Order(int idCustomer, BigDecimal total) {
+        this.idCustomer = idCustomer;
+        this.total = total;
+        this.createdAt = Calendar.getInstance().getTime();
+        this.updatedAt = this.createdAt;
     }
 
     public int getIdOrder() {
@@ -38,46 +36,40 @@ public class Order {
         this.idOrder = idOrder;
     }
 
-    public Integer getAmt_purchase() {
-        return amt_purchase;
+    public BigDecimal getTotal() {
+        return this.total;
     }
 
-    public void setAmt_purchase(Integer amt_purchase) {
-        this.amt_purchase = amt_purchase;
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 
-    public Date getDt_purchase() {
-        return dt_purchase;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDt_purchase(Date dt_purchase) {
-        this.dt_purchase = dt_purchase;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public int getIdClient() {
-        return idClient;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public int getIdProductsOrder() {
-        return idProductsOrder;
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setIdProductsOrder(int idProductsOrder) {
-        this.idProductsOrder = idProductsOrder;
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "idOrder=" + idOrder +
-                ", amt_purchase=" + amt_purchase +
-                ", dt_purchase=" + dt_purchase +
-                ", idClient=" + idClient +
-                ", idProductsOrder=" + idProductsOrder +
-                '}';
+        return "Order{" + "idOrder=" + idOrder + ", total=" + total + ", createdAt=" + createdAt + "}";
     }
 }

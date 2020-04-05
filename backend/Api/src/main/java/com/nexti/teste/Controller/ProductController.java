@@ -9,21 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public Product create(@RequestBody Product request) {
-        Product product = new Product(
-                request.getSku(),
-                request.getName(),
-                request.getDescription(),
-                request.getPrice(),
-                request.getAmount()
-        );
+        Product product = new Product(request.getSku(), request.getName(), request.getDescription(),
+                request.getPrice());
         return productRepository.save(product);
     }
 
@@ -33,7 +28,7 @@ public class ProductController {
     }
 
     @RequestMapping("/{id}")
-    public Optional<Product> getById(@PathVariable("id") int idProduct){
+    public Optional<Product> getById(@PathVariable("id") int idProduct) {
         return productRepository.findById(idProduct);
     }
 
@@ -45,12 +40,12 @@ public class ProductController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Product edit(@PathVariable("id") int idAnuncio, @RequestBody Product request) throws Exception {
-        Product productEdited = productRepository.findById(idAnuncio).orElseThrow(() -> new Exception("Anúncio não encontrado"));
+        Product productEdited = productRepository.findById(idAnuncio)
+                .orElseThrow(() -> new Exception("Anúncio não encontrado"));
         productEdited.setSku(request.getSku());
         productEdited.setName(request.getName());
         productEdited.setDescription(request.getDescription());
         productEdited.setPrice(request.getPrice());
-        productEdited.setAmount(request.getAmount());
 
         productRepository.save(productEdited);
 

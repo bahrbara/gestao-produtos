@@ -5,13 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
-    List<Order> findAllByOrderByDtInicialDescIdOrderDesc(String neighborhood);
+    Optional<Order> findById(Integer idOrder);
+
+    List<Order> findAllByOrderByCreatedAtDescIdOrderDesc();
+
+    List<Order> findByIdCustomer(Integer idCustomer);
+
     void deleteById(Integer idEscola);
 }
-
-findByIdClient
-
-        findAllByOrderByDtInicialDescIdOrderDesc

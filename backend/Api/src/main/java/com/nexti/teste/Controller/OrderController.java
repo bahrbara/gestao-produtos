@@ -1,16 +1,17 @@
 package com.nexti.teste.Controller;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
 import com.nexti.teste.Model.Order;
-
 import com.nexti.teste.Repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order")
@@ -21,12 +22,7 @@ public class OrderController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Order create(@RequestBody Order request) {
-        Order product = new Order(
-                request.getIdClient(),
-                request.getIdProductsOrder(),
-                request.getAmt_purchase(),
-                request.getDt_purchase()
-        );
+        Order product = new Order(request.getIdCustomer(), request.getTotal());
         return orderRepository.save(product);
     }
 
@@ -37,40 +33,34 @@ public class OrderController {
 
     @RequestMapping("/order/")
     public List<Order> findAllSorted() {
-        return orderRepository.findAllByOrderByDtInicialDescIdOrderDesc();
+        return orderRepository.findAllByOrderByCreatedAtDescIdOrderDesc();
     }
 
     @RequestMapping("/{id}")
-    public Optional<Order> getById(@PathVariable("id") int idOrder){
+    public Optional<Order> getById(@PathVariable("id") int idOrder) {
         return orderRepository.findById(idOrder);
     }
 
-    @RequestMapping("/cliente/{idClient}")
-    public List<Order> getByIdClient(@PathVariable("idClient") int idClient){
-        return orderRepository.findByIdClient(idClient);
-    }
-
-    @RequestMapping("/produto")
-    public List<Order> getByType(@PathVariable("type") String type){
-        return orderRepository.findByType(type);
+    @RequestMapping("/cliente/{idCustomer}")
+    public List<Order> getByIdClient(@PathVariable("idCustomer") int idCustomer) {
+        return orderRepository.findByIdCustomer(idCustomer);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteById(@PathVariable("id") int idAnuncio) {
-        orderRepository.deleteById(idAnuncio);
-        return "Pedido removido com sucesso " + idAnuncio;
+    public String deleteById(@PathVariable("id") int idOrder) {
+        orderRepository.deleteById(idOrder);
+        return "Pedido removido com sucesso " + idOrder;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Order edit(@PathVariable("id") int idAnuncio, @RequestBody Order request) throws Exception {
-        Order productEdited = orderRepository.findById(idAnuncio).orElseThrow(() -> new Exception("Pedido não encontrado"));
-        productEdited.setIdClient(request.getIdClient());
-        productEdited.setIdProductsOrder(request.getIdProductsOrder());
-        productEdited.setAmt_purchase(request.getAmt_purchase());
-        productEdited.setDt_purchase(request.getDt_purchase());
+    public Order edit(@PathVariable("id") int idOrder, @RequestBody Order request) throws Exception {
+        Order orderEdited = orderRepository.findById(idOrder).orElseThrow(() -> new Exception("Pedido não encontrado"));
+        orderEdited.setIdCustomer(request.getIdCustomer());
+        orderEdited.setTotal(request.getTotal());
+        orderEdited.setUpdatedAt(request.getUpdatedAt());
 
-        orderRepository.save(productEdited);
+        orderRepository.save(orderEdited);
 
-        return productEdited;
+        return orderEdited;
     }
 }

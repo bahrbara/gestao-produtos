@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -18,16 +18,15 @@ public class Product {
     private String name;
     private String description;
     private BigDecimal price;
-    private Integer amount;
 
-    public Product() {}
+    public Product() {
+    }
 
-    public Product(String sku, String name, String description, BigDecimal price, Integer amount) {
+    public Product(String sku, String name, String description, BigDecimal price) {
         this.sku = sku;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amount = amount;
     }
 
     public int getIdProduct() {
@@ -70,23 +69,9 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
     @Override
     public String toString() {
-        return "Product{" +
-                "idProduct=" + idProduct +
-                ", sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
-                ", descrition='" + description + '\'' +
-                ", price=" + price +
-                ", amount=" + amount +
-                '}';
+        return "Product{" + "idProduct=" + idProduct + ", sku='" + sku + '\'' + ", name='" + name + '\''
+                + ", descrition='" + description + '\'' + ", price=" + price + '}';
     }
 }
